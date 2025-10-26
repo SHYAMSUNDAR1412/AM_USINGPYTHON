@@ -31,6 +31,50 @@ Procedure:
 • Save the file • Execute the code
 • If any Error, correct it in code and execute again Verify the generated waveform using Tabulation and Model Waveform
 
+PROGRAM:
+```
+import numpy as np
+import matplotlib.pyplot as plt
+
+Am = 5.3
+Ac = 10.6
+fm = 424
+fc = 4240
+fs = 42400
+
+t = np.arange(0, 3/fm, 1/fs)
+
+m = Am * np.cos(2 * np.pi * fm * t)
+c = Ac * np.cos(2 * np.pi * fc * t)
+
+s = (Ac + m) * np.cos(2 * np.pi * fc * t)
+
+plt.figure(figsize=(10, 6))
+
+plt.subplot(3,1,1)
+plt.plot(t, m)
+
+plt.xlabel("Time")
+plt.ylabel("Amplitude")
+plt.grid()
+
+plt.subplot(3,1,2)
+plt.plot(t, c)
+
+plt.xlabel("Time")
+plt.ylabel("Amplitude")
+plt.grid()
+
+plt.subplot(3,1,3)
+plt.plot(t, s)
+plt.xlabel("Time")
+plt.ylabel("Amplitude")
+plt.grid()
+
+plt.tight_layout()
+plt.show()
+```
+
 OUTPUT WAVEFORM:
 
 <img width="1238" height="738" alt="image" src="https://github.com/user-attachments/assets/14d45c05-021f-4d55-a045-d4130d515942" />
